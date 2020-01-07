@@ -17,7 +17,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      play: null,
       estado: 1,
       songs: [],
       mostrar: "",
@@ -78,12 +77,11 @@ class App extends React.Component {
       e.preventDefault();
       this.state.estado === 1 ? this.setState({estado: 2}) : this.setState({estado: 1})
       this.player.play()
-      
     }  
 
     pause(e){
       e.preventDefault();
-      this.state.estado === 2 ? this.setState({estado: 1}) : this.setState({estado: 2})
+      this.state.estado === 1 ? this.setState({estado: 2}) : this.setState({estado: 1})
       this.player.pause()
     }  
 
@@ -105,8 +103,8 @@ class App extends React.Component {
             </div>
             <div className="col" id="botonesmusica">
               <a href="/" id="back" className="list-group-item list-group-item-action"><i className="fas fa-backward"></i></a>
-              <a href="/" id="play" onClick={(e) => this.play(e)} className={`list-group-item list-group-item-action ${this.state.estado === 1 ? this.state.mostrar : this.state.esconder}`} ><i className="fas fa-play"></i></a>
-              <a href="/" id="pause" onClick={(e) => this.pause(e)} className={`list-group-item list-group-item-action ${this.state.estado === 2 ? this.state.mostrar : this.state.esconder}`} ><i className="fas fa-pause"></i></a>
+              <a href="/" id="play" className={`list-group-item list-group-item-action ${this.state.estado === 1 ? this.state.mostrar : this.state.esconder}`} onClick={(e) => this.play(e)}><i className="fas fa-play"></i></a>
+              <a href="/" id="pause" className={`list-group-item list-group-item-action ${this.state.estado === 2 ? this.state.mostrar : this.state.esconder}`} onClick={(e) => this.pause(e)}><i className="fas fa-pause"></i></a>
               <a href="/" id="next" className="list-group-item list-group-item-action"><i className="fas fa-forward"></i></a>
             </div>
           </div>
