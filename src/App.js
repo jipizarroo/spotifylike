@@ -19,8 +19,6 @@ class App extends React.Component {
     this.state = {
       estado: 1,
       songs: [],
-      mostrar: "",
-      esconder: "d-none",
     }
     this.player = null;
   }
@@ -63,25 +61,17 @@ class App extends React.Component {
   setPlayer(e, i){
     e.preventDefault()
     this.player = document.querySelectorAll("audio")[i];
-    if(this.state.estado === 1){
-      this.setState({estado: 2})
       this.player.play()
-    }else if(this.state.estado === 2){
-      this.setState({estado: 1})
-      this.player.pause()
-    }
   }
 
 
     play(e){
       e.preventDefault();
-      this.state.estado === 1 ? this.setState({estado: 2}) : this.setState({estado: 1})
       this.player.play()
     }  
 
     pause(e){
       e.preventDefault();
-      this.state.estado === 1 ? this.setState({estado: 2}) : this.setState({estado: 1})
       this.player.pause()
     }  
 
@@ -103,8 +93,8 @@ class App extends React.Component {
             </div>
             <div className="col" id="botonesmusica">
               <a href="/" id="back" className="list-group-item list-group-item-action"><i className="fas fa-backward"></i></a>
-              <a href="/" id="play" className={`list-group-item list-group-item-action ${this.state.estado === 1 ? this.state.mostrar : this.state.esconder}`} onClick={(e) => this.play(e)}><i className="fas fa-play"></i></a>
-              <a href="/" id="pause" className={`list-group-item list-group-item-action ${this.state.estado === 2 ? this.state.mostrar : this.state.esconder}`} onClick={(e) => this.pause(e)}><i className="fas fa-pause"></i></a>
+              <a href="/" id="play" className="list-group-item list-group-item-action" onClick={(e) => this.play(e)}><i className="fas fa-play"></i></a>
+              <a href="/" id="pause" className="list-group-item list-group-item-action" onClick={(e) => this.pause(e)}><i className="fas fa-pause"></i></a>
               <a href="/" id="next" className="list-group-item list-group-item-action"><i className="fas fa-forward"></i></a>
             </div>
           </div>
